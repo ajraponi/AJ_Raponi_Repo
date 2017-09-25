@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Layout 1 header-footer-sidebar using pixels</title>
+	<style type="text/css">
+		/*group selectors, same styles different tags*/
+		div, header, main, footer, article, section, aside {
+			background-color: rgba(0,0,100,.2);
+			min-height: 100px;
+
+		}
+
+		div.wrapper{
+			width: 900px;
+			/* center a div within the browser using margin 0 auto*/
+			margin: 0 auto;
+		}
+		
+		article {
+			width: 600px;
+			float: left;
+			/*add 10px margin all around will add 20px to width and height */
+			margin: 10px;
+			/*600px - 10px - 10px = 580px*/
+			width: 580px;
+			/*adding padding will also add to our width and height */
+			padding: 10px;
+			width: 560px;
+
+		}
+
+		aside {
+			width: 300px;
+			min-height: 600px;
+			float: left;
+			margin: 10px;
+			width: 280px;
+
+		}
+		/*When we are done floating elements we need to clear immediately right*/
+		.clear {
+			clear: both;
+			height: 0;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+		<header>
+			a header element pretend im the main nav...
+		</header>
+		<main>
+			<h1>Main content section, heading elements display block</h1>
+			<article>
+				<h2>An article with 3 sections</h2>
+				<section>
+					<h3>Section 1</h3>
+				</section>
+				<section>
+					<h3>Section 2</h3>
+				</section>
+				<section>
+					<h3>Section 3</h3>
+				</section>
+			</article>
+			<aside>
+				<h2>Sidebar</h2>
+			</aside>
+			<!--  clear out so our wrapping div in this case, the main tag, wraps around, we will discuss several clear fixes and alternatives next week -->
+			<br class="clear">
+		</main>
+		<footer>
+			<h3>some footer text. maybe social media</h3>
+		</footer>
+	</div>
+</body>
+</html>
