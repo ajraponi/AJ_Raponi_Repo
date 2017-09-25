@@ -1,0 +1,68 @@
+/*transparent blue background, and min height for all blocl 
+elements so that we can easily keep track of our elements*/
+
+/*universal selector*/
+/*
+* {
+	margin: 0;
+	padding: 0;
+}
+*/
+
+body {
+	margin: 0;
+	padding: 0;
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+/*grouped selectors*/
+div, header, footer, main, article, section {
+	min-height: 100px;
+	/*rgba color red green blue alpha*/
+	background-color: rgba(0, 100, 255, .2);
+
+}
+
+main {
+	width: 960px;
+	margin: 0 auto;
+}
+
+/*use pseudo class selector to add block empty content with zero height that clears both sides*/
+/*this helps us avoid or fix wrapping issues when floating. 
+we apply the clear fix to the wrapper element*/
+
+.clearfix::after{
+	display: block;
+	clear:both;
+	content: '';
+	/*to ensure backward compatability*/
+	height: 0;
+	font-size: 0;
+	/*one last fallback bc we are paranoid*/
+	visibility: hidden;
+}
+
+/*decendent selector for more css specificity*/
+article.col-pixels section {
+	/*960px container - 6*10px margin*/
+	width: 300px;
+	margin: 0 10px;
+	float: left;
+}
+
+/*Descendent selector again for more css sprecificity*/
+
+article.col-fluid section {
+	width: 20%;
+	margin: 2.5%;
+	float: left;
+}
+
+
+
+
+
+
+
+
