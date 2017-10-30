@@ -24,23 +24,12 @@ Copyright 2013, Josh Cope
 			/*extra extra backup*/
 			visibility: hidden;
 		}
-		/*Tring to get the nav to go above all other elements*/
-		nav {
-			z-index: 1;
-		}
-		body {
-			z-index: -1;
-		}
 
 		/*################SITE WIDE HEADER##########################*/
 
 		h1 {
 			float: left;
 			margin: 20px;
-		}
-
-		nav {
-			z-index: 1;
 		}
 
 		nav ul {
@@ -54,8 +43,8 @@ Copyright 2013, Josh Cope
 		}
 
 		nav ul li:hover {
-    		background-color: #aaa;
-    	}
+  		background-color: #d9d9d9;
+  	}
 
 		nav ul a {
 			display: block;
@@ -70,7 +59,9 @@ Copyright 2013, Josh Cope
 		nav ul ul {
 			display: none;
 			background-color: #ddd;
-			width: 300px;
+			width: 200px;
+			position: absolute;
+			z-index: 1000;
 		}
 
 
@@ -78,17 +69,19 @@ Copyright 2013, Josh Cope
 			padding: 15px;
 			text-align: center;
 			display: block;
-			position: relative;
+
 		}
 
 		/*selects all ul elements where its parent is an unordered list with a moused over list item*/
-		nav ul li:hover ul  {
+		nav ul li:hover > ul  {
 			display: block;
-			background-color: #ccc;
 		}
 
 		nav ul li:hover > ul li:hover {
-			background-color: #999;
+			background-color: #515254;
+		}
+
+		nav ul li:hover > ul a:hover {
 			color: white;
 		}
 
@@ -113,6 +106,8 @@ Copyright 2013, Josh Cope
 			top: 50%;
 			left: 50%;
 			transform: translate(-50%, -50%);
+			text-transform: uppercase;
+			font-weight: bold;
 		}
 
 		.picture_icon img {
@@ -146,7 +141,7 @@ Copyright 2013, Josh Cope
 		/*#################ABOUT PAGE STYLING################################*/
 
 		.about_container {
-
+			display: block;
 		}
 
 		.column {
@@ -249,7 +244,7 @@ Copyright 2013, Josh Cope
 
 		}
 
-
+		/*####################END OF PEOPLE PAGE STYLING#########################*/
 
 
 
@@ -264,45 +259,141 @@ Copyright 2013, Josh Cope
    ========================================================================== */
 
 /* Tablet Portrait size to Base 996px */
-@media only screen and (min-width: 768px) and (max-width: 995px) {}
+@media only screen and (min-width: 768px) and (max-width: 995px) {
+	nav ul li {
+		width: 100%;
+		display: block;
+	}
 
+  nav ul ul{
+		width: 100%;
+	}
+
+  nav ul ul a {
+		text-align: center;
+		width: 100%;
+		padding: 15px 0;
+	}
+
+	.column {
+		float: none;
+		margin: auto;
+		width: 100%;
+	}
+	.column p {
+		text-align: center;
+	}
+	.column img {
+		float: none;
+	}
+	.main_container {
+		width: 100%;
+		margin: auto;
+	}
+}
 /* All Mobile Sizes */
 @media only screen and (max-width: 767px) {
 	nav ul li {
-    			width: 100%;
-    			display: block;
-    		}
+		width: 100%;
+		display: block;
+	}
 
-    		nav ul ul{
-    			width: 100%;
-    		}
+  nav ul ul{
+		width: 100%;
+	}
 
-    		nav ul ul a {
-    			text-align: center;
-    			width: 100%;
-    			padding: 15px 0;
-    		}
+  nav ul ul a {
+		text-align: center;
+		width: 100%;
+		padding: 15px 0;
+	}
+
+	.column {
+		float: none;
+		margin: auto;
+		width: 100%;
+	}
+	.column p {
+		text-align: center;
+	}
+	.column img {
+		float: none;
+	}
+	.main_container {
+		width: 100%;
+		margin: auto;
+	}
 }
 
 /* Mobile Landscape Size to Tablet Portrait */
-@media only screen and (min-width: 480px) and (max-width: 767px) {}
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+	nav ul li {
+		width: 100%;
+		display: block;
+	}
+
+  nav ul ul{
+		width: 100%;
+	}
+
+  nav ul ul a {
+		text-align: center;
+		width: 100%;
+		padding: 15px 0;
+	}
+
+	.column {
+		float: none;
+		margin: auto;
+		width: 100%;
+	}
+	.column p {
+		text-align: center;
+	}
+	.column img {
+		float: none;
+	}
+	.main_container {
+		width: 100%;
+		margin: auto;
+	}
+}
 
 /* Mobile Portrait Size to Mobile Landscape Size */
-@media only screen and (max-width: 479px) {}
+@media only screen and (max-width: 479px) {
+	nav ul li {
+		width: 100%;
+		display: block;
+	}
+
+  nav ul ul{
+		width: 100%;
+	}
+
+  nav ul ul a {
+		text-align: center;
+		width: 100%;
+		padding: 15px 0;
+	}
+
+	.column {
+		float: none;
+		margin: auto;
+		width: 100%;
+	}
+	.column p {
+		text-align: center;
+	}
+	.column img {
+		float: none;
+	}
+	.main_container {
+		width: 100%;
+		margin: auto;
+	}
+}
 
 
 /* =============================================================================
    Font-Face
    ========================================================================== */
-/* This is the proper syntax for an @font-face file
-
-/* @font-face {
-font-family: 'FontName';
-src: url('../fonts/FontName.eot');
-src: url('../fonts/FontName.eot?iefix') format('embedded-opentype'),
-url('../fonts/FontName.woff') format('woff'),
-url('../fonts/FontName.ttf') format('truetype'),
-url('../fonts/FontName.svg#FontName') format('svg');
-font-weight: normal;
-font-style: normal; }
-*/
