@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Adding to the DOM</title>
+
+</head>
+<body>
+	<button id="singleBTN">Add a Single P Function</button>
+	<button id="multipleBTN">Add multiple paragraphs with a parameter</button>
+	<div id="content"></div>
+
+	<script type="text/javascript">
+
+		//declare global variables first
+		var content;
+
+		//wait for all content in page to load then execute an anonymous func
+		document.addEventListener('DOMContentLoaded', function(event) {
+			console.log(event.target);
+
+			content = document.getElementById('content');
+
+			document.getElementById('singleBTN').addEventListener('click', addSingleP);
+			document.getElementById('multipleBTN').addEventListener('click', function() {
+				addMultipleP(8);
+			});
+
+
+		});
+
+
+
+		function addSingleP() {
+			// add a single paragraph tag via a string and inner HTML
+			content.innerHTML += '<p>This is a single paragraph tag added the bad way!</p>'
+		}
+
+		function addMultipleP(n) {
+			// proper Dynamic DOM creation
+			for(var i = 0; i < n; i++) {
+				console.log(i);
+				//this will create a p element
+				var p = document.createElement('P');
+				//we need to create a text node to add into the P we just created
+				var text = document.createTextNode('This is paragraph number: ' + i);
+
+				//append the txt inside the newly created P tag
+				p.appendChild(text);
+				//append the p element (which now has text inside) to the content div
+				content.appendChild(p);
+			}
+		}
+
+	</script>
+</body>
+</html>

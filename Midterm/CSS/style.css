@@ -1,0 +1,308 @@
+/*
+Responsive 996px grid system ~ Style CSS.
+Copyright 2013, Josh Cope
+*/
+
+/* =============================================================================
+   Site Styles
+   ========================================================================== */
+		* {
+			margin: 0;
+			padding: 0;
+			font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+		}
+
+		/*our generic clearfix bc we are using floats and we dont want the container div to collapse*/
+
+		.clear_fix::after {
+			display: block;
+			clear: both;
+			/*for older browsers*/
+			height: 0;
+			font-size: 0;
+			content: '';
+			/*extra extra backup*/
+			visibility: hidden;
+		}
+		/*Tring to get the nav to go above all other elements*/
+		nav {
+			z-index: 1;
+		}
+		body {
+			z-index: -1;
+		}
+
+		/*################SITE WIDE HEADER##########################*/
+
+		h1 {
+			float: left;
+			margin: 20px;
+		}
+
+		nav {
+			z-index: 1;
+		}
+
+		nav ul {
+			list-style-type: none;
+			position: relative;
+		}
+
+		nav ul li {
+			width: 200px;
+			float: left;
+		}
+
+		nav ul li:hover {
+    		background-color: #aaa;
+    	}
+
+		nav ul a {
+			display: block;
+			color: #222;
+			text-decoration: none;
+			line-height: 38px;
+			padding: 15px;
+			text-align: center;
+		}
+
+		/*hide the sublist*/
+		nav ul ul {
+			display: none;
+			background-color: #ddd;
+			width: 300px;
+		}
+
+
+		nav ul ul a {
+			padding: 15px;
+			text-align: center;
+			display: block;
+			position: relative;
+		}
+
+		/*selects all ul elements where its parent is an unordered list with a moused over list item*/
+		nav ul li:hover ul  {
+			display: block;
+			background-color: #ccc;
+		}
+
+		nav ul li:hover > ul li:hover {
+			background-color: #999;
+			color: white;
+		}
+
+		/*################END OF SITE WIDE HEADER##########################*/
+
+		/*################HOME PAGE STYLINGS###############################*/
+		.main_container {
+			width: 75%;
+			margin: auto;
+		}
+
+		.picture_icon {
+			position: relative;
+			padding: 15px;
+			text-align: center;
+			font-size: 4vw;
+			text-shadow: .5px .5px 1px black;
+		}
+
+		.center_text {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+
+		.picture_icon img {
+	   	 transition: all 0.4s;
+			 max-width: 100%;
+			 height: auto;
+			 z-index: -1;
+		}
+
+		.picture_icon:hover img {
+			opacity: .7;
+			filter: blur(1px);
+		}
+
+		.picture_icon a {
+			transition: all .4s;
+			text-decoration: none;
+			color: white;
+		}
+
+		.picture_icon:hover a {
+			color: black;
+			text-shadow: none;
+			font-size: 5vw;
+		}
+
+
+
+		/*################END OF HOME PAGE STYLINGS##########################*/
+
+		/*#################ABOUT PAGE STYLING################################*/
+
+		.about_container {
+
+		}
+
+		.column {
+			float: left;
+			max-width: 50%;
+			padding: 20px;
+		}
+
+
+		.about_description {
+			height: 600px;
+			max-width: 100%;
+			line-height: 600px;
+			min-width: 50%;
+		}
+
+		.column p {
+			text-align: left;
+			line-height: 1.5;
+			display: inline-block;
+			vertical-align: middle;
+			font-size: 2.5vh;
+		}
+
+		.column img {
+			max-width: 100%;
+			margin: auto;
+			display: block;
+			float: right;
+		}
+
+		.about_description a {
+			text-align: center;
+			line-height: 50px;
+			width: 200px;
+			height: auto;
+			display: block;
+			text-decoration: none;
+			color: black;
+			border: 1px solid black;
+			margin: auto;
+
+		}
+
+		.about_description a:hover {
+			background-color: #515254;
+			color: white;
+		}
+
+		.line {
+			width: 75%;
+			height: auto;
+			border-bottom: 2px solid black;
+			background-color: blue;
+			content: '';
+		}
+
+		/*##################END OF ABOUT STYLING########################*/
+
+		/*##################PEOPLE PAGE STYLING#########################*/
+
+		.slideshow_container {
+			width: 50%;
+			margin: auto;
+		}
+
+		.slides {
+			position: relative;
+		}
+
+		.slides img {
+			max-width: 100%;
+			max-height: 50%;
+		}
+
+		.slides button {
+			padding: 50% 25%;
+			display: inline-block;
+			position: absolute;
+			border: none;
+			vertical-align: middle;
+			text-decoration: none;
+			background-color: white;
+			color: black;
+			opacity: 0;
+		}
+
+		.btn_left {
+			left: 0%;
+			top: 50%;
+			transform: translate(0%, -50%);
+			cursor: w-resize;
+		}
+
+		.btn_right {
+			right: 0%;
+			top: 50%;
+			transform: translate(0%, -50%);
+			cursor: e-resize;
+
+		}
+
+
+
+
+
+/* =============================================================================
+   Page Styles
+   ========================================================================== */
+
+
+
+/* =============================================================================
+   Media Queries
+   ========================================================================== */
+
+/* Tablet Portrait size to Base 996px */
+@media only screen and (min-width: 768px) and (max-width: 995px) {}
+
+/* All Mobile Sizes */
+@media only screen and (max-width: 767px) {
+	nav ul li {
+    			width: 100%;
+    			display: block;
+    		}
+
+    		nav ul ul{
+    			width: 100%;
+    		}
+
+    		nav ul ul a {
+    			text-align: center;
+    			width: 100%;
+    			padding: 15px 0;
+    		}
+}
+
+/* Mobile Landscape Size to Tablet Portrait */
+@media only screen and (min-width: 480px) and (max-width: 767px) {}
+
+/* Mobile Portrait Size to Mobile Landscape Size */
+@media only screen and (max-width: 479px) {}
+
+
+/* =============================================================================
+   Font-Face
+   ========================================================================== */
+/* This is the proper syntax for an @font-face file
+
+/* @font-face {
+font-family: 'FontName';
+src: url('../fonts/FontName.eot');
+src: url('../fonts/FontName.eot?iefix') format('embedded-opentype'),
+url('../fonts/FontName.woff') format('woff'),
+url('../fonts/FontName.ttf') format('truetype'),
+url('../fonts/FontName.svg#FontName') format('svg');
+font-weight: normal;
+font-style: normal; }
+*/

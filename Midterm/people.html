@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>AJ Raponi People</title>
+
+	<meta name="Portfolio website for AJ Raponi" content="">
+	<meta name="AJ Raponi" content="">
+
+	<link rel="stylesheet" href="css/style.css">
+
+	<script src="JS/slideshow.js"></script>
+
+</head>
+<body>
+	<nav id="main_nav">
+		<h1 class="clear_fix">AJ Raponi</h1>
+		<ul class="clear_fix">
+			<li><a href="index.html">Home</a></li>
+			<li>
+				<a href="photography.html">Photography</a>
+				<ul>
+					<li><a href="people.html">People</a></li>
+					<li><a href="#">Places</a></li>
+				</ul>
+			</li>
+			<li>
+				<a href="#">Mixed Media</a>
+				<ul>
+					<li><a href="#">Coding Projects</a></li>
+					<li><a href="#">Designs</a></li>
+					<li><a href="#">Videography</a></li>
+				</ul>
+			</li>
+			<li><a href="about.html">About</a></li>
+		</ul>
+
+	</nav>
+	<div class="slideshow_container">
+		<div class="slides">
+			<img class="my_slide" src="IMG/people/david.jpg" >
+			<img class="my_slide" src="IMG/people/group.jpg" >
+			<img class="my_slide" src="IMG/people/lexi.jpg" >
+			<img class="my_slide" src="IMG/people/nick.jpg" >
+			<img class="my_slide" src="IMG/people/shelbs.jpg" >
+			<img class="my_slide" src="IMG/people/shelbs2.jpg" >
+
+			<button class="btn_left" type="button" onclick="plus_div(-1)"></button>
+			<button class="btn_right" type="button" onclick="plus_div(1)"></button>
+
+		</div>
+	</div>
+	<script type="text/javascript">
+		show_divs(slide_num)
+	</script>
+</body>
+</html>

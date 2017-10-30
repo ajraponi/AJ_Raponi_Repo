@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JS 101</title>
+	<script type="text/javascript">
+		var temp = 68;
+		console.log("Today's temperature is: " + temp + " degrees farenheight.")
+
+		function startMe() {
+			// sumValues(234, 1);
+		}
+
+		function sumValues(a,b) {
+			//console.log(a);
+			//console.log(b);
+			var sum = a + b;
+			alert(sum);
+		}
+
+		var isOn = true;
+
+		function switchOnOff() {
+			if (isOn === true) {
+				//execute this code if condition evaluates to be true 
+				alert("isOn is currently set to true. About to switch to false.");
+				isOn = false
+			} else {
+				//do this if the condition about evaluates to be false
+				alert("isOn is currently set to false. About to switch to true.");
+				isOn = !isOn;
+			}
+		}
+
+		function countToN(n) {
+			for (var i = 0; i < n; i++) {
+				//this happens when statement 2 evaluates statement 1 to be true 
+				console.log(i);
+
+			}
+		}
+
+	</script>
+</head>
+<body onload="startMe()">
+	<button onclick="sumValues(354.777, 23587)">CLICK ME</button>
+
+	<button onclick="switchOnOff()">Click to toggle Boolean!</button>
+
+	<button onclick="countToN(250)">Count to the number we pick!</button>
+</body>
+</html>
