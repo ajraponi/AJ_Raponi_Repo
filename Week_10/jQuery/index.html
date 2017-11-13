@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div id="my_id">
+      This is a div we will grab with a jquery selector.
+    </div>
+    <p class="goat">Paragraph 1</p>
+    <p class="goat">Paragraph 2</p>
+    <p class="goat">Paragraph 3</p>
+    <p class="goat">Paragraph 4</p>
+
+    <ul>
+      <li class="goat">Item 1</li>
+      <li>Item 2</li>
+      <li>Item 3</li>
+    </ul>
+
+
+
+
+
+
+  <!--  always try and load jquery first before you try and use it for anything-->
+    <script
+  src="http://code.jquery.com/jquery-3.2.1.slim.min.js"
+  integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g="
+  crossorigin="anonymous"></script>
+  <!-- Our own custom JS tag for jquery functions -->
+  <script type="text/javascript">
+    //Vanilla js way of waiting for the page to load
+    // document.addEventListener('DOMContentLoaded', function() {
+    //   //do your on load functions and event listeners here
+    //   console.log('long hand js way');
+    // });
+
+    //onload event listener in jquery
+    $(document).ready(function(){
+      //do stuff here when the page loads
+      //get element by id js
+      // document.getElementById('my_id').addEventListener....
+      //jquery way
+      $('#my_id').click(function(){
+        //this targets the thing that was clicked here
+        console.log($(this)); //similat to event.target
+        $(this).html('You Clicked Me!');
+      });
+
+      // document.getElementsByTagName('P') = $(p)
+      console.log($('p'));
+
+      //document.getElementsByClassName('goat');
+      console.log($('.goat')); //put a dot bc it is a class name
+    });
+
+    // query selector grabs the first instance of the matched selector on the page
+    // console.log(document.querySelector('li'));
+
+    console.log($('li:first'));
+
+  </script>
+  </body>
+</html>

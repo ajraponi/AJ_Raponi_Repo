@@ -213,8 +213,7 @@ Copyright 2013, Josh Cope
 		}
 
 		.slides img {
-			max-width: 100%;
-			max-height: 50%;
+			max-width: 100%;z
 		}
 
 		.slides button {

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Hello, world!</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="container">
+    <h1>Hello, jQuery!</h1>
+    <p id="mouse_me">This is a paragraph with mouse enter and mouse leave events
+      attached in jQuery</p>
+
+      <button class="btn btn-default" id="dbl_click">
+        Double click for event!
+      </button>
+      <hr>
+      <!--  hide show buttons -->
+      <button class="btn btn-danger" id="hide_me">Hide</button>
+      <button class="btn btn-success" id="show_me">Show</button>
+      <button class="btn btn-warning" id="toggle_me">Toggle Hide Show</button>
+
+      <div class="card">
+        This is a div that will hide and show. we are going to use the selector
+        <code>
+          $('.well:first')
+        </code>
+        as our selector.
+      </div>
+
+    </div>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+  src="http://code.jquery.com/jquery-3.2.1.slim.min.js"
+  integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g="
+  crossorigin="anonymous"></script>
+    <!-- own custom scripts load after we load jq -->
+    <script type="text/javascript">
+      //on load event listener
+      $(document).ready(function(){
+        //multiple event listener with parameter object
+        $('#mouse_me').on({
+          mouseenter: function() {
+            console.log('mouse entered the paragraph element!');
+          },
+          mouseleave: function() {
+            console.log('mouse left the paragraph element :(');
+          }
+        });
+
+        $('#dbl_click').dblclick(function(){
+          alert('Double Clicked');
+        });
+
+        //Hide Show Toggle
+        $('#hide_me').click(function(){
+          $('.card:first').hide();
+        });
+
+        $('#show_me').click(function(){
+          $('.card:first').show();
+        });
+
+        $('#toggle_me').click(function(){
+          $('.card:first').toggle();
+        });
+      });
+    </script>
+  </body>
+</html>
