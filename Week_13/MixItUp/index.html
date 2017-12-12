@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Mix It Up and JQ</title>
+    <style type="text/css">
+      * {
+        box-sizing: border-box;
+      }
+
+      body,
+      button {
+        font-family: 'Helvetica Neue', arial, sans-serif;
+      }
+
+      /*mixed styles*/
+      .container {
+        position: relative;
+        padding: 2%;
+        /*evenly space inline block elements*/
+        text-align: justify;
+        background-color: #ddd;
+        min-height: 200px;
+      }
+
+      .container::after {
+        content: '';
+        display: inline-block;
+        width: 100%;
+      }
+
+      /*mobile first design pattern. default styles apply to mobile phones and we use
+      media queries to target larger screens*/
+
+      .container .mix,
+      .container .gap {
+        display: inline-block;
+        width: 100%;
+      }
+
+      .container .mix {
+        text-align: left;
+        background-color: #aaa;
+        margin-bottom: 2%;
+        border-radius: 8px;
+        display: none;
+        height: 200px;
+      }
+
+      .container .mix::after {
+        content: attr(class);
+        color: white;
+        font-size: 16px;
+        display: inline-block;
+        vertical-align: top;
+        padding: 4% 6%;
+        font-weight: 300;
+      }
+
+      /*this is optional we are adding some extra padding so that our boxes
+      are a fixed height larger than our content, we could also use min-height*/
+      .container .mix::before {
+        content: '';
+        display: inline-block;
+        padding-top: 60%;
+      }
+
+      /*larger phones and tablet size*/
+      @media all and (min-width: 768px) {
+        .container .mix,
+        .container .gap {
+          width: 48%;
+        }
+      }
+      /*desktop and larger screens*/
+      @media all and (min-width: 1024px) {
+        .container .mix,
+        .container .gap {
+          width: 24%;
+        }
+      }
+
+      /*Control styles*/
+      .controls {
+        background-color: #111;
+        padding: 1%;
+        color: white;
+      }
+
+      label {
+        font-weight: 400;
+        margin: 0 20px 0 0;
+      }
+
+      button {
+        display: inline-block;
+        padding: 5px 10px;
+        background-color: #777;
+        border: 0;
+        color: #eee;
+        font-size: 16px;
+        font-weight: 100;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      button.active {
+        background-color: #999;
+      }
+
+      button:focus {
+        outline: 0 none;
+      }
+
+      button + label {
+        margin-left: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- our sorting controls and filter -->
+    <div class="controls">
+      <label >Filter:</label>
+      <button class="filter" data-filter=".dog">Dog</button>
+      <button class="filter" data-filter=".cat">Cat</button>
+      <button class="filter" data-filter=".goat">Goat</button>
+      <button id="reset">RESET</button>
+      <label>Sort:</label>
+      <button class="sort" data-sort="default">Default</button>
+      <button class="sort" data-sort="myorder:asc">ASC</button>
+      <button class="sort" data-sort="myorder:desc">DESC</button>
+      <button class="sort" data-sort="random">Random</button>
+    </div>
+
+
+
+    <div class="container" id="Container">
+      <!-- sort me! -->
+      <!-- class mix is used by mixitup to know what to sort/mix -->
+      <div class="mix dog" data-myorder="1"></div>
+      <div class="mix cat" data-myorder="2"></div>
+      <div class="mix dog cat" data-myorder="6"></div>
+      <div class="mix goat" data-myorder="4"></div>
+      <div class="mix goat cat" data-myorder="5"></div>
+      <div class="mix goat dog" data-myorder="3"></div>
+      <div class="gap" ></div>
+      <div class="gap" ></div>
+
+    </div>
+
+
+
+
+
+    <!-- Load jq first -->
+    <script
+    src="http://code.jquery.com/jquery-2.2.4.min.js"
+    integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+    crossorigin="anonymous"></script>
+    <!-- Then mixitup jq lib  -->
+    <script src="jquery.mixitup.min.js"></script>
+    <!-- Custom scripts -->
+    <script type="text/javascript">
+      // $(document).ready(function(){});
+      // ^short hand for this
+      $(function() {
+        $('#reset').click(function(){
+          $('#Container').mixItUp('filter','')
+        })
+        $('#Container').mixItUp({
+          load: {
+            filter: 'all' //what to filter by on load, try changing this to ''
+          },
+          controls: {
+            toggleFilterButtons: true, //try false here
+            toggleLogic: 'and' //try or here
+          },
+          animation: {
+            enable: true,
+            effects: 'fade sclae rotatX stagger',
+            duration: 1000,
+            easing: 'ease',
+            perspectiveDistance: '3000',
+            perspectiveOrigin: '50% 50%',
+            queue: true,
+            animateChangeLayout: false,
+            animateResizeContainer: false,
+            animateResizeTargets: false,
+            staggerSequence: false,
+            reverseOut: false
+          }
+        });
+      });
+    </script>
+
+  </body>
+</html>

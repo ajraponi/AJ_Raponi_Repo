@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Elevator Animation</title>
+    <style type="text/css">
+      body {
+        font-family: Arial, sans-serif;
+        margin-top: 40px;
+        background-color: black;
+        color: #fff;
+        /*visibility: hidden;*/
+      }
+      main {
+        margin: 0 auto;
+        width: 800px;
+      }
+
+      section {
+        padding: 20px 0 80px 0;
+        min-height: 100vh;
+      }
+
+      h2 {
+        font-size: 2.5rem;
+        border-bottom: 2px solid #CCC;
+        padding-bottom: 20px;
+
+      }
+
+      /*Navigation styles*/
+      ul {
+        position: fixed;
+        top: 40%;
+        right: 0%;
+        list-style-type: none;
+      }
+
+      li {
+        width: 30px;
+        padding: 10px;
+        margin-bottom: 1px;
+        background-color: #111;
+        border-left: 10px solid #333;
+        cursor: pointer;
+      }
+
+      .active {
+        color: #FFF;
+        border-left: 20px solid #FFF;
+        line-height: 30px;
+
+      }
+    </style>
+  </head>
+  <body>
+    <div class="">
+      <ul>
+        <li id="floor5btn">5</li>
+        <li id="floor4btn">4</li>
+        <li id="floor3btn">3</li>
+        <li id="floor2btn">2</li>
+        <li id="floor1btn">1</li>
+      </ul>
+    </div>
+
+    <main>
+      <section id="floor5Panel">
+        <h2>Floor 5</h2>
+      </section>
+      <section id="floor4Panel">
+        <h2>Floor 4</h2>
+      </section>
+      <section id="floor3Panel">
+        <h2>Floor 3</h2>
+      </section>
+      <section id="floor2Panel">
+        <h2>Floor 2</h2>
+      </section>
+      <section id="floor1Panel">
+        <h2>Floor 1</h2>
+      </section>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenLite.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/easing/EasePack.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/plugins/CSSPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/plugins/ScrollToPlugin.min.js"></script>
+    
+    <!-- Custom animations scripts -->
+    <script type="text/javascript">
+      //make sure the page loads before animating anything
+      $(document).ready(function () {
+        //make the menu and page fade in on load
+        //make the body tag invisible to start
+        TweenLite.from($('body'), 0.5, {autoAlpha:0});
+
+        //animate our menu in from off the page
+        TweenLite.from($('ul'), 0.5, {right:-500, delay:0.5});
+
+        //grab each button by ID and assign them to a variable
+        var $floor1btn = $('#floor1btn'),
+            $floor2btn = $('#floor2btn'),
+            $floor3btn = $('#floor3btn'),
+            $floor4btn = $('#floor4btn'),
+            $floor5btn = $('#floor5btn');
+
+        //pass all the list items as an array for our menu
+        var $navButtons = $('li');
+
+        //add and remove active class on mouse enter and nouse leave
+        $navButtons.mouseenter(function () {
+          TweenLite.to(this, 0.2, {className:'+=active'})
+        });
+
+        $navButtons.mouseleave(function () {
+          TweenLite.to(this, 0.2, {className:'-=active'})
+        });
+
+        //set the scroll position to the top of each floors divs
+        //console.log($('#floor1Panel').offset().top);
+
+        //assign an HTML5 data attribute to each of our buttons
+        $floor5btn.attr('data-scrollPos', $('#floor5Panel').offset.top);
+        $floor4btn.attr('data-scrollPos', $('#floor4Panel').offset.top);
+        $floor3btn.attr('data-scrollPos', $('#floor3Panel').offset.top);
+        $floor2btn.attr('data-scrollPos', $('#floor2Panel').offset.top);
+        $floor1btn.attr('data-scrollPos', $('#floor1Panel').offset.top);
+
+        $navButtons.click(function () {
+          var myScrollPosition = $(this).attr('data-scrollPos');
+          //console.log(myScrollPosition);
+          TweenLite.to(window, 2, {scrollTo: {y: myScrollPosition}, ease: Bounce.easeOut});
+        });
+
+        var initialFloor = $('#floor1btn').attr('data-scrollPos');
+        TweenLite.to(window, 1, )
+      });
+    </script>
+  </body>
+</html>
